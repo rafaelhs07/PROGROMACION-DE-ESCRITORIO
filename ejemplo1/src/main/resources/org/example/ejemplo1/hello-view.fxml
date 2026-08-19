@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.ejemplo1.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label fx:id="lblsaludar" text="Hola, bienvenido a UAM!"/>
+    <Label fx:id="lblname" text="Nombre"/>
+    <TextField fx:id="tflastname" layoutX="60.0" layoutY="80" prefWidth="250.0" promptText="Juan"/>
+    <Label fx:id="lbllastname" text="Apellido"/>
+    <TextField fx:id="tfName" layoutX="60.0" layoutY="80" prefWidth="250.0" promptText="Lopez"/>
+    <Label fx:id="lblCIF" text="CIF"/>
+    <TextField fx:id="tfCIF" layoutX="60.0" layoutY="80" prefWidth="250.0" promptText="21046634"/>
+    <Label fx:id="lblemail" text="Correo"/>
+    <TextField fx:id="tfemail" layoutX="60.0" layoutY="80" prefWidth="250.0" promptText="uamv.edu.ni"/>
+   <Button text="Siguiente" onAction="#onHelloButtonClick"/>
+</VBox>
