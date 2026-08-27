@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER"
+      spacing="15"
+      prefWidth="400"
+      prefHeight="400"
+      style="-fx-background-color: #E5D8C8;"
+      xmlns="http://javafx.com/javafx/21.0.6"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.registropaciente.LoginController">
+
+    <padding>
+        <Insets top="30" right="50" bottom="30" left="50"/>
+    </padding>
+
+    <Label text="INICIAR SESIÓN"
+           style="
+           -fx-font-size: 22px;
+           -fx-font-weight: bold;
+           -fx-text-fill: #159B9B;
+           "/>
+
+    <ImageView fx:id="imagenCandado"
+               fitWidth="80"
+               fitHeight="80"
+               preserveRatio="true">
+
+        <image>
+            <Image url="@candado_cerrado.png"/>
+        </image>
+
+    </ImageView>
+
+    <Label text="Usuario"
+           maxWidth="Infinity"
+           style="-fx-font-weight: bold;"/>
+
+    <TextField fx:id="txtUsuario"
+               promptText="Ingrese usuario"/>
+
+    <Label text="Contraseña"
+           maxWidth="Infinity"
+           style="-fx-font-weight: bold;"/>
+
+    <PasswordField fx:id="txtPassword"
+                   promptText="Ingrese contraseña"/>
+
+    <Button text="Ingresar"
+            onAction="#iniciarSesion"
+            prefWidth="140"
+            style="
+            -fx-background-color: #159B9B;
+            -fx-text-fill: white;
+            -fx-font-weight: bold;
+            "/>
+
+    <Label fx:id="lblMensaje"
+           text=""
+           style="-fx-text-fill: red;"/>
+
+</VBox>
