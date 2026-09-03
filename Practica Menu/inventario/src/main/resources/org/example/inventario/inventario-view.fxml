@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane
+        prefHeight="680.0"
+        prefWidth="1000.0"
+        style="-fx-background-color: #f4f6f5;"
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="org.example.inventario.InventarioController">
+
+
+    <!-- ===================================== -->
+    <!-- PARTE SUPERIOR -->
+    <!-- ===================================== -->
+
+    <top>
+
+        <VBox>
+
+
+            <!-- ============================= -->
+            <!-- MENU BAR -->
+            <!-- ============================= -->
+
+            <MenuBar>
+
+                <menus>
+
+                    <Menu text="Archivo">
+
+                        <items>
+
+                            <MenuItem
+                                    text="Nuevo"
+                                    accelerator="Ctrl+N"
+                                    onAction="#nuevoProducto"/>
+
+                            <MenuItem
+                                    text="Limpiar"
+                                    onAction="#limpiarCampos"/>
+
+                            <SeparatorMenuItem/>
+
+                            <MenuItem
+                                    text="Salir"
+                                    accelerator="Ctrl+Q"
+                                    onAction="#salir"/>
+
+                        </items>
+
+                    </Menu>
+
+
+                    <Menu text="Producto">
+
+                        <items>
+
+                            <MenuItem
+                                    text="Guardar"
+                                    accelerator="Ctrl+G"
+                                    onAction="#guardarProducto"/>
+
+                            <MenuItem
+                                    text="Editar"
+                                    onAction="#editarProducto"/>
+
+                            <MenuItem
+                                    text="Eliminar"
+                                    onAction="#eliminarProducto"/>
+
+                        </items>
+
+                    </Menu>
+
+
+                    <Menu text="Ayuda">
+
+                        <items>
+
+                            <MenuItem
+                                    text="Acerca de"
+                                    onAction="#acercaDe"/>
+
+                        </items>
+
+                    </Menu>
+
+                </menus>
+
+            </MenuBar>
+
+
+            <!-- ============================= -->
+            <!-- TOOLBAR -->
+            <!-- ============================= -->
+
+            <ToolBar
+                    prefHeight="55.0"
+                    style="-fx-background-color: #e1e8e5;">
+
+                <items>
+
+                    <Button
+                            text="Nuevo"
+                            prefWidth="100.0"
+                            onAction="#nuevoProducto"/>
+
+                    <Button
+                            text="Guardar"
+                            prefWidth="100.0"
+                            onAction="#guardarProducto"/>
+
+                    <Button
+                            text="Editar"
+                            prefWidth="100.0"
+                            onAction="#editarProducto"/>
+
+                    <Button
+                            text="Eliminar"
+                            prefWidth="100.0"
+                            onAction="#eliminarProducto"/>
+
+                </items>
+
+            </ToolBar>
+
+        </VBox>
+
+    </top>
+
+
+    <!-- ===================================== -->
+    <!-- CENTRO -->
+    <!-- ===================================== -->
+
+    <center>
+
+        <VBox spacing="18.0">
+
+            <padding>
+
+                <Insets
+                        top="25.0"
+                        right="30.0"
+                        bottom="25.0"
+                        left="30.0"/>
+
+            </padding>
+
+
+            <!-- TÍTULO -->
+
+            <Label
+                    text="Distribuidora El Güegüense"
+                    style="-fx-text-fill: #26332f;">
+
+                <font>
+
+                    <Font
+                            name="System Bold"
+                            size="25.0"/>
+
+                </font>
+
+            </Label>
+
+
+            <Label
+                    text="Administración de productos del inventario"
+                    style="-fx-text-fill: #5d6964;"/>
+
+
+            <!-- ================================= -->
+            <!-- FORMULARIO -->
+            <!-- ================================= -->
+
+            <GridPane
+                    hgap="15.0"
+                    vgap="15.0"
+                    style="-fx-background-color: white;
+                           -fx-background-radius: 8;
+                           -fx-padding: 20;">
+
+
+                <!-- FILA 0 -->
+
+                <Label
+                        text="Código:"
+                        GridPane.columnIndex="0"
+                        GridPane.rowIndex="0"/>
+
+                <TextField
+                        fx:id="txtCodigo"
+                        promptText="Ej: P001"
+                        prefWidth="260.0"
+                        GridPane.columnIndex="1"
+                        GridPane.rowIndex="0"/>
+
+
+                <Label
+                        text="Nombre:"
+                        GridPane.columnIndex="2"
+                        GridPane.rowIndex="0"/>
+
+                <TextField
+                        fx:id="txtNombre"
+                        promptText="Nombre del producto"
+                        prefWidth="260.0"
+                        GridPane.columnIndex="3"
+                        GridPane.rowIndex="0"/>
+
+
+                <!-- FILA 1 -->
+
+                <Label
+                        text="Categoría:"
+                        GridPane.columnIndex="0"
+                        GridPane.rowIndex="1"/>
+
+                <TextField
+                        fx:id="txtCategoria"
+                        promptText="Ej: Alimentos"
+                        GridPane.columnIndex="1"
+                        GridPane.rowIndex="1"/>
+
+
+                <Label
+                        text="Precio:"
+                        GridPane.columnIndex="2"
+                        GridPane.rowIndex="1"/>
+
+                <TextField
+                        fx:id="txtPrecio"
+                        promptText="Ej: 100.00"
+                        GridPane.columnIndex="3"
+                        GridPane.rowIndex="1"/>
+
+
+                <!-- FILA 2 -->
+
+                <Label
+                        text="Existencia:"
+                        GridPane.columnIndex="0"
+                        GridPane.rowIndex="2"/>
+
+                <TextField
+                        fx:id="txtExistencia"
+                        promptText="Ej: 20"
+                        GridPane.columnIndex="1"
+                        GridPane.rowIndex="2"/>
+
+            </GridPane>
+
+
+            <!-- ================================= -->
+            <!-- TABLEVIEW -->
+            <!-- ================================= -->
+
+            <TableView
+                    fx:id="tblProductos"
+                    prefHeight="330.0">
+
+
+                <!-- CONTEXT MENU -->
+
+                <contextMenu>
+
+                    <ContextMenu>
+
+                        <items>
+
+                            <MenuItem
+                                    text="Editar producto"
+                                    onAction="#editarProducto"/>
+
+                            <MenuItem
+                                    text="Eliminar producto"
+                                    onAction="#eliminarProducto"/>
+
+                            <SeparatorMenuItem/>
+
+                            <MenuItem
+                                    text="Ver detalle"
+                                    onAction="#verDetalle"/>
+
+                        </items>
+
+                    </ContextMenu>
+
+                </contextMenu>
+
+
+                <!-- COLUMNAS -->
+
+                <columns>
+
+                    <TableColumn
+                            fx:id="colCodigo"
+                            text="Código"
+                            prefWidth="130.0"/>
+
+                    <TableColumn
+                            fx:id="colNombre"
+                            text="Nombre"
+                            prefWidth="230.0"/>
+
+                    <TableColumn
+                            fx:id="colCategoria"
+                            text="Categoría"
+                            prefWidth="200.0"/>
+
+                    <TableColumn
+                            fx:id="colPrecio"
+                            text="Precio C$"
+                            prefWidth="150.0"/>
+
+                    <TableColumn
+                            fx:id="colExistencia"
+                            text="Existencia"
+                            prefWidth="150.0"/>
+
+                </columns>
+
+            </TableView>
+
+
+            <!-- MENSAJES -->
+
+            <Label
+                    fx:id="lblMensaje"
+                    text=""
+                    style="-fx-text-fill: #286646;
+                           -fx-font-weight: bold;"/>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>
